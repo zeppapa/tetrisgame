@@ -26,56 +26,56 @@ public class PieceTest {
 
     @Test
     void testNewPiece() {
-        assertEquals(testPiece.centerX, 5);
-        assertEquals(testPiece.centerY, 1);
-        assertEquals(testPiece.aX, 4);
-        assertEquals(testPiece.aY, 1);
-        assertEquals(testPiece.bX, 6);
-        assertEquals(testPiece.bY, 1);
-        assertEquals(testPiece.cX, 7);
-        assertEquals(testPiece.cY, 1);
-        assertEquals(testPiece.color, Color.CYAN);
-        assertEquals(testPiece.lowest, 1);
-        assertEquals(testPiece.leftMost, 4);
-        assertEquals(testPiece.rightMost, 7);
-        assertEquals(testPiece.top, 1);
+        assertEquals(testPiece.getCenterX(), 5);
+        assertEquals(testPiece.getCenterY(), 1);
+        assertEquals(testPiece.getaX(), 4);
+        assertEquals(testPiece.getaY(), 1);
+        assertEquals(testPiece.getbX(), 6);
+        assertEquals(testPiece.getbY(), 1);
+        assertEquals(testPiece.getcX(), 7);
+        assertEquals(testPiece.getcY(), 1);
+        assertEquals(testPiece.getColor(), Color.CYAN);
+        assertEquals(testPiece.getLowest(), 1);
+        assertEquals(testPiece.getLeftMost(), 4);
+        assertEquals(testPiece.getRightMost(), 7);
+        assertEquals(testPiece.getTop(), 1);
     }
 
 
     @Test
     void testPieceFall(){
-        assertEquals(testPiece.centerY + 1, testFallenPiece.centerY);
-        assertEquals(testPiece.aY + 1, testFallenPiece.aY);
-        assertEquals(testPiece.bY + 1, testFallenPiece.bY);
-        assertEquals(testPiece.cY + 1, testFallenPiece.cY);
+        assertEquals(testPiece.getCenterY() + 1, testFallenPiece.getCenterY());
+        assertEquals(testPiece.getaY() + 1, testFallenPiece.getaY());
+        assertEquals(testPiece.getbY() + 1, testFallenPiece.getbY());
+        assertEquals(testPiece.getcY() + 1, testFallenPiece.getcY());
     }
 
     @Test
     void testMovePieceLeft(){
-        assertEquals(testPiece.centerX - 1, testLeftMovedPiece.centerX);
-        assertEquals(testPiece.aX - 1, testLeftMovedPiece.aX);
-        assertEquals(testPiece.bX - 1, testLeftMovedPiece.bX);
-        assertEquals(testPiece.cX - 1, testLeftMovedPiece.cX);
+        assertEquals(testPiece.getCenterX() - 1, testLeftMovedPiece.getCenterX());
+        assertEquals(testPiece.getaX() - 1, testLeftMovedPiece.getaX());
+        assertEquals(testPiece.getbX() - 1, testLeftMovedPiece.getbX());
+        assertEquals(testPiece.getcX() - 1, testLeftMovedPiece.getcX());
     }
 
     @Test
     void testMovePieceRight(){
-        assertEquals(testPiece.centerX + 1, testRightMovedPiece.centerX);
-        assertEquals(testPiece.aX + 1, testRightMovedPiece.aX);
-        assertEquals(testPiece.bX + 1, testRightMovedPiece.bX);
-        assertEquals(testPiece.cX + 1, testRightMovedPiece.cX);
+        assertEquals(testPiece.getCenterX() + 1, testRightMovedPiece.getCenterX());
+        assertEquals(testPiece.getaX() + 1, testRightMovedPiece.getaX());
+        assertEquals(testPiece.getbX() + 1, testRightMovedPiece.getbX());
+        assertEquals(testPiece.getcX() + 1, testRightMovedPiece.getcX());
     }
 
     @Test
     void testPieceChangeForm(){
-        assertEquals(testPiece.centerX + 1, testChangedFormedPiece.centerX);
-        assertEquals(testPiece.centerY, testChangedFormedPiece.centerY);
-        assertEquals(testPiece.aX + 2, testChangedFormedPiece.aX);
-        assertEquals(testPiece.aY - 1, testChangedFormedPiece.aY);
-        assertEquals(testPiece.bX, testChangedFormedPiece.bX);
-        assertEquals(testPiece.bY + 1, testChangedFormedPiece.bY);
-        assertEquals(testPiece.cX - 1, testChangedFormedPiece.cX);
-        assertEquals(testPiece.cY + 2, testChangedFormedPiece.cY);
+        assertEquals(testPiece.getCenterX() + 1, testChangedFormedPiece.getCenterX());
+        assertEquals(testPiece.getCenterY(), testChangedFormedPiece.getCenterY());
+        assertEquals(testPiece.getaX() + 2, testChangedFormedPiece.getaX());
+        assertEquals(testPiece.getaY() - 1, testChangedFormedPiece.getaY());
+        assertEquals(testPiece.getbX(), testChangedFormedPiece.getbX());
+        assertEquals(testPiece.getbY() + 1, testChangedFormedPiece.getbY());
+        assertEquals(testPiece.getcX() - 1, testChangedFormedPiece.getcX());
+        assertEquals(testPiece.getcY() + 2, testChangedFormedPiece.getcY());
 
     }
 }

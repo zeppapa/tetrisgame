@@ -69,13 +69,13 @@ public class GameController {
 
     public void initdata(String userName) {
         this.userName = userName;
-        userNameLabel.setText("Current user: " + this.userName);
+        userNameLabel.setText(userName);
     }
 
     private void initGameState(){
         for (int i = 0; i <= 22; i++){
             for (int j = 0; j <= 11; j++){
-                gamePane.getChildren().add(map.rectangles[i][j]);
+                gamePane.getChildren().add(map.getRectangles()[i][j]);
             }
         }
     }
@@ -83,10 +83,10 @@ public class GameController {
     private void drawGameState(){
         for (int i = 2; i < 22; i++){
             for (int j = 1; j < 11; j++){
-                if (map.map[i][j] == 1){
-                    map.rectangles[i][j].setFill(piece.color);
-                } else if (map.map[i][j] == 0){
-                    map.rectangles[i][j].setFill(Color.WHITE);
+                if (map.getMap()[i][j] == 1){
+                    map.getRectangles()[i][j].setFill(piece.getColor());
+                } else if (map.getMap()[i][j] == 0){
+                    map.getRectangles()[i][j].setFill(Color.WHITE);
                 }
             }
         }
@@ -115,10 +115,11 @@ public class GameController {
                     @Override
                     public void run() {
                         pieceFall();
-                        if (!canThePieceFall() && piece.lowest == 1){
+                        if (!canThePieceFall() && piece.getLowest() == 1){
                             isOver = true;
                             overLabel.setText("Game over!");
                             startButton.setText("Reset");
+                            finishButton.setText("Finish");
                             Logger.info("The game is over");
                             Logger.info("The player finished the game with {} score", score.get());
                             timer.cancel();
@@ -190,6 +191,7 @@ public class GameController {
         isOver = false;
         overLabel.setText("");
         startButton.setText("Start");
+        finishButton.setText("Exit");
         Logger.info("Initializing the map");
     }
 
@@ -207,20 +209,20 @@ public class GameController {
         } else {
             map.setValues(piece, 9);
             int numberOfClearedRows = 0;
-            if (map.isThisRowFull(piece.centerY)){
-                map.clearRow(piece.centerY);
+            if (map.isThisRowFull(piece.getCenterY())){
+                map.clearRow(piece.getCenterY());
                 numberOfClearedRows +=1;
             }
-            if (map.isThisRowFull(piece.aY)){
-                map.clearRow(piece.aY);
+            if (map.isThisRowFull(piece.getaY())){
+                map.clearRow(piece.getaY());
                 numberOfClearedRows +=1;
             }
-            if (map.isThisRowFull(piece.bY)){
-                map.clearRow(piece.bY);
+            if (map.isThisRowFull(piece.getbY())){
+                map.clearRow(piece.getbY());
                 numberOfClearedRows +=1;
             }
-            if (map.isThisRowFull(piece.cY)){
-                map.clearRow(piece.cY);
+            if (map.isThisRowFull(piece.getcY())){
+                map.clearRow(piece.getcY());
                 numberOfClearedRows +=1;
             }
             map.shiftRowsDown();
@@ -240,22 +242,22 @@ public class GameController {
     }
 
     private boolean canThePieceFall(){
-        if (piece.lowest == 21 || map.map[piece.centerY + 1][piece.centerX] == 9 || map.map[piece.aY + 1][piece.aX] == 9 ||
-                map.map[piece.bY + 1][piece.bX] == 9 || map.map[piece.cY + 1][piece.cX] == 9){
+        if (piece.getLowest() == 21 || map.getMap()[piece.getCenterY() + 1][piece.getCenterX()] == 9 || map.getMap()[piece.getaY() + 1][piece.getaX()] == 9 ||
+                map.getMap()[piece.getbY() + 1][piece.getbX()] == 9 || map.getMap()[piece.getcY() + 1][piece.getcX()] == 9){
             return false;
         } else return true;
     }
 
     private boolean canThePieceMoveRight(){
-        if (piece.rightMost == 10 || map.map[piece.centerY][piece.centerX + 1] == 9 || map.map[piece.aY][piece.aX + 1] == 9 ||
-                map.map[piece.bY][piece.bX + 1] == 9 || map.map[piece.cY][piece.cX + 1] == 9){
+        if (piece.getRightMost() == 10 || map.getMap()[piece.getCenterY()][piece.getCenterX() + 1] == 9 || map.getMap()[piece.getaY()][piece.getaX() + 1] == 9 ||
+                map.getMap()[piece.getbY()][piece.getbX() + 1] == 9 || map.getMap()[piece.getcY()][piece.getcX() + 1] == 9){
             return false;
         } else return true;
     }
 
     private boolean canThePieceMoveLeft(){
-        if (piece.leftMost == 1 || map.map[piece.centerY][piece.centerX - 1] == 9 || map.map[piece.aY][piece.aX - 1] == 9 ||
-                map.map[piece.bY][piece.bX - 1] == 9 || map.map[piece.cY][piece.cX - 1] == 9){
+        if (piece.getLeftMost() == 1 || map.getMap()[piece.getCenterY()][piece.getCenterX() - 1] == 9 || map.getMap()[piece.getaY()][piece.getaX() - 1] == 9 ||
+                map.getMap()[piece.getbY()][piece.getbX() - 1] == 9 || map.getMap()[piece.getcY()][piece.getcX() - 1] == 9){
             return false;
         } else return true;
     }

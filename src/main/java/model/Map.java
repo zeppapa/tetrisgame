@@ -2,34 +2,37 @@ package model;
 
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import lombok.Data;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * Class representing the field of the game
  */
-
+@Data
+@Slf4j
 public class Map {
     /**
      * The array defining the game field with the border and the invisible invisible line above the upper border
      */
-    public int[][] map = new int[23][12];
+    private int[][] map = new int[23][12];
 
     /**
      * The array defining the {@code Rectangle} class rectangles
      */
 
-    public Rectangle[][] rectangles = new Rectangle[23][12];
+    private  Rectangle[][] rectangles = new Rectangle[23][12];
 
     /**
      * The array defines an ordered row contains the {@code Piece} object names
      */
 
-    public char[] pieceRow = new char[7];
+    private char[] pieceRow = new char[7];
 
     /**
      * The array defines which piece is used from the {@code pieceRow} array
      */
 
-    boolean[] pieceIsUsed = new boolean[7];
+    private boolean[] pieceIsUsed = new boolean[7];
 
     /**
      * Creates a new {@code Map} object
@@ -78,10 +81,10 @@ public class Map {
      */
 
     public void setValues(Piece piece){
-        map[piece.centerY][piece.centerX] = piece.value;
-        map[piece.aY][piece.aX] = piece.value;
-        map[piece.bY][piece.bX] = piece.value;
-        map[piece.cY][piece.cX] = piece.value;
+        map[piece.getCenterY()][piece.getCenterX()] = piece.getValue();
+        map[piece.getaY()][piece.getaX()] = piece.getValue();
+        map[piece.getbY()][piece.getbX()] = piece.getValue();
+        map[piece.getcY()][piece.getcX()] = piece.getValue();
     }
 
     /**
@@ -91,10 +94,10 @@ public class Map {
      */
 
     public void setValues(Piece piece, int value){
-        map[piece.centerY][piece.centerX] = value;
-        map[piece.aY][piece.aX] = value;
-        map[piece.bY][piece.bX] = value;
-        map[piece.cY][piece.cX] = value;
+        map[piece.getCenterY()][piece.getCenterX()] = value;
+        map[piece.getaY()][piece.getaX()] = value;
+        map[piece.getbY()][piece.getbX()] = value;
+        map[piece.getcY()][piece.getcX()] = value;
     }
 
     /**
@@ -169,10 +172,18 @@ public class Map {
             }
         }
 
-        map[piece.centerY][piece.centerX] = piece.value;
-        map[piece.aY][piece.aX] = piece.value;
-        map[piece.bY][piece.bX] = piece.value;
-        map[piece.cY][piece.cX] = piece.value;
+        map[piece.getCenterY()][piece.getCenterX()] = piece.getValue();
+        map[piece.getaY()][piece.getaX()] = piece.getValue();
+        map[piece.getbY()][piece.getbX()] = piece.getValue();
+        map[piece.getcY()][piece.getcX()] = piece.getValue();
         return piece;
+    }
+
+    public int[][] getMap() {
+        return map;
+    }
+
+    public Rectangle[][] getRectangles() {
+        return rectangles;
     }
 }

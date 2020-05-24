@@ -1,31 +1,34 @@
 package model;
 
 import javafx.scene.paint.Color;
+import lombok.Data;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * Class representing the Tetronimo piece.
  */
-
+@Data
+@Slf4j
 public class Piece {
     /**
      * Representing the coordinates, value, name, color, form, and border coordinates of the piece.
      */
-    public int centerX = 5;
-    public int centerY = 1;
-    public int aX;
-    public int aY;
-    public int bX;
-    public int bY;
-    public int cX;
-    public int cY;
-    public int value = 1;
-    public char name;
-    public Color color;
-    int form = 1;
-    public int leftMost;
-    public int rightMost;
-    public int lowest;
-    public int top;
+    private int centerX = 5;
+    private int centerY = 1;
+    private int aX;
+    private int aY;
+    private int bX;
+    private int bY;
+    private int cX;
+    private int cY;
+    private int value = 1;
+    private char name;
+    private Color color;
+    private int form = 1;
+    private int leftMost;
+    private int rightMost;
+    private int lowest;
+    private int top;
 
     /**
      * Empty constructor of the {@code Piece}.
@@ -432,20 +435,20 @@ public class Piece {
             centerX = tempCenterX; centerY = tempCenterY; aX = tempAX; aY = tempAY; bX = tempBX; bY = tempBY; cX = tempCX; cY = tempCY;
             form = tempForm;
         }
-        if (map.map[centerY][centerX] == 9 || map.map[aY][aX] == 9 || map.map[bY][bX] == 9 || map.map[cY][cX] == 9){
+        if (map.getMap()[centerY][centerX] == 9 || map.getMap()[aY][aX] == 9 || map.getMap()[bY][bX] == 9 || map.getMap()[cY][cX] == 9){
             if (leftMost > 1) { centerX = changedCenterX - 1; aX = changedAX - 1; bX = changedBX - 1; cX = changedCX - 1; }
-            if (map.map[centerY][centerX] == 9 || map.map[aY][aX] == 9 || map.map[bY][bX] == 9 || map.map[cY][cX] == 9){
+            if (map.getMap()[centerY][centerX] == 9 || map.getMap()[aY][aX] == 9 || map.getMap()[bY][bX] == 9 || map.getMap()[cY][cX] == 9){
                 if (rightMost < 10){ centerX = changedCenterX + 1; aX = changedAX + 1; bX = changedBX + 1; cX = changedCX + 1;}
-                if (map.map[centerY][centerX] == 9 || map.map[aY][aX] == 9 || map.map[bY][bX] == 9 || map.map[cY][cX] == 9){
+                if (map.getMap()[centerY][centerX] == 9 || map.getMap()[aY][aX] == 9 || map.getMap()[bY][bX] == 9 || map.getMap()[cY][cX] == 9){
                     if (top > 2 && leftMost >= 1 && rightMost <= 10) { centerX = changedCenterX; aX = changedAX; bX = changedBX; cX = changedCX;
                         centerY = changedCenterY - 1; aY = changedAY - 1; bY = changedBY - 1; cY = changedCY - 1; }
-                    if (map.map[centerY][centerX] == 9 || map.map[aY][aX] == 9 || map.map[bY][bX] == 9 || map.map[cY][cX] == 9){
+                    if (map.getMap()[centerY][centerX] == 9 || map.getMap()[aY][aX] == 9 || map.getMap()[bY][bX] == 9 || map.getMap()[cY][cX] == 9){
                         if (top > 2 && leftMost > 1) {centerX = changedCenterX - 1; aX = changedAX - 1; bX = changedBX - 1; cX = changedCX - 1;
                             centerY = changedCenterY - 1; aY = changedAY - 1; bY = changedBY - 1; cY = changedCY - 1; }
-                        if (map.map[centerY][centerX] == 9 || map.map[aY][aX] == 9 || map.map[bY][bX] == 9 || map.map[cY][cX] == 9){
+                        if (map.getMap()[centerY][centerX] == 9 || map.getMap()[aY][aX] == 9 || map.getMap()[bY][bX] == 9 || map.getMap()[cY][cX] == 9){
                             if (top > 2 && rightMost < 10) { centerX = changedCenterX + 1; aX = changedAX + 1; bX = changedBX + 1; cX = changedCX + 1;
                                 centerY = changedCenterY - 1; aY = changedAY - 1; bY = changedBY - 1; cY = changedCY - 1; }
-                            if (map.map[centerY][centerX] == 9 || map.map[aY][aX] == 9 || map.map[bY][bX] == 9 || map.map[cY][cX] == 9){
+                            if (map.getMap()[centerY][centerX] == 9 || map.getMap()[aY][aX] == 9 || map.getMap()[bY][bX] == 9 || map.getMap()[cY][cX] == 9){
                                 centerX = tempCenterX; centerY = tempCenterY; aX = tempAX; aY = tempAY; bX = tempBX; bY = tempBY; cX = tempCX; cY = tempCY;
                                 form = tempForm;
                             }
@@ -455,5 +458,61 @@ public class Piece {
             }
         }
         setMosts();
+    }
+
+    public int getCenterX() {
+        return centerX;
+    }
+
+    public int getCenterY() {
+        return centerY;
+    }
+
+    public int getaX() {
+        return aX;
+    }
+
+    public int getaY() {
+        return aY;
+    }
+
+    public int getbX() {
+        return bX;
+    }
+
+    public int getbY() {
+        return bY;
+    }
+
+    public int getcX() {
+        return cX;
+    }
+
+    public int getcY() {
+        return cY;
+    }
+
+    public int getValue() {
+        return value;
+    }
+
+    public Color getColor() {
+        return color;
+    }
+
+    public int getLeftMost() {
+        return leftMost;
+    }
+
+    public int getRightMost() {
+        return rightMost;
+    }
+
+    public int getLowest() {
+        return lowest;
+    }
+
+    public int getTop() {
+        return top;
     }
 }
