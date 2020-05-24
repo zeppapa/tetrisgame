@@ -9,111 +9,73 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class PieceTest {
-
-    Map testMap;
-    Piece testPiece;
-    Piece testPiece2;
+    Map testMap = new Map();
+    Piece testPiece = new Piece('i');
+    Piece testFallenPiece = new Piece('i');
+    Piece testRightMovedPiece = new Piece('i');
+    Piece testLeftMovedPiece = new Piece('i');
+    Piece testChangedFormedPiece = new Piece('i');
 
     @BeforeEach
     void setUp() {
-        testMap = new Map();
-        testPiece = testMap.newPiece();
-        testPiece2 = testPiece;
+        testFallenPiece.fall();
+        testRightMovedPiece.moveRight();
+        testLeftMovedPiece.moveLeft();
+        testChangedFormedPiece.changeForm(testMap);
     }
 
     @Test
     void testNewPiece() {
         assertEquals(testPiece.centerX, 5);
         assertEquals(testPiece.centerY, 1);
-        if (testPiece.name == 'i') {
-            assertEquals(testPiece.aX, 4);
-            assertEquals(testPiece.aY, 1);
-            assertEquals(testPiece.bX, 6);
-            assertEquals(testPiece.bY, 1);
-            assertEquals(testPiece.cX, 7);
-            assertEquals(testPiece.cY, 1);
-            assertEquals(testPiece.color, Color.CYAN);
-        }
-        if (testPiece.name == 'o'){
-            assertEquals(testPiece.aX, 5);
-            assertEquals(testPiece.aY, 0);
-            assertEquals(testPiece.bX, 6);
-            assertEquals(testPiece.bY, 1);
-            assertEquals(testPiece.cX, 6);
-            assertEquals(testPiece.cY, 0);
-            assertEquals(testPiece.color, Color.GOLD);
-        }
-        if (testPiece.name == 't'){
-            assertEquals(testPiece.aX, 4);
-            assertEquals(testPiece.aY, 1);
-            assertEquals(testPiece.bX, 5);
-            assertEquals(testPiece.bY, 0);
-            assertEquals(testPiece.cX, 6);
-            assertEquals(testPiece.cY, 1);
-            assertEquals(testPiece.color, Color.PURPLE);
-        }
-        if (testPiece.name == 's'){
-            assertEquals(testPiece.aX, 4);
-            assertEquals(testPiece.aY, 1);
-            assertEquals(testPiece.bX, 5);
-            assertEquals(testPiece.bY, 0);
-            assertEquals(testPiece.cX, 6);
-            assertEquals(testPiece.cY, 0);
-            assertEquals(testPiece.color, Color.GREEN);
-        }
-        if (testPiece.name == 'z'){
-            assertEquals(testPiece.aX, 4);
-            assertEquals(testPiece.aY, 0);
-            assertEquals(testPiece.bX, 5);
-            assertEquals(testPiece.bY, 0);
-            assertEquals(testPiece.cX, 6);
-            assertEquals(testPiece.cY, 1);
-            assertEquals(testPiece.color, Color.RED);
-        }
-        if (testPiece.name == 'j'){
-            assertEquals(testPiece.aX, 4);
-            assertEquals(testPiece.aY, 0);
-            assertEquals(testPiece.bX, 4);
-            assertEquals(testPiece.bY, 1);
-            assertEquals(testPiece.cX, 6);
-            assertEquals(testPiece.cY, 1);
-            assertEquals(testPiece.color, Color.BLUE);
-        }
-        if (testPiece.name == 'l'){
-            assertEquals(testPiece.aX, 4);
-            assertEquals(testPiece.aY, 1);
-            assertEquals(testPiece.bX, 6);
-            assertEquals(testPiece.bY, 1);
-            assertEquals(testPiece.cX, 6);
-            assertEquals(testPiece.cY, 0);
-            assertEquals(testPiece.color, Color.ORANGE);
-        }
+        assertEquals(testPiece.aX, 4);
+        assertEquals(testPiece.aY, 1);
+        assertEquals(testPiece.bX, 6);
+        assertEquals(testPiece.bY, 1);
+        assertEquals(testPiece.cX, 7);
+        assertEquals(testPiece.cY, 1);
+        assertEquals(testPiece.color, Color.CYAN);
+        assertEquals(testPiece.lowest, 1);
+        assertEquals(testPiece.leftMost, 4);
+        assertEquals(testPiece.rightMost, 7);
+        assertEquals(testPiece.top, 1);
     }
+
 
     @Test
     void testPieceFall(){
-        testPiece2.fall();
-        assertEquals(testPiece.centerY + 1, testPiece2.centerY);
-        assertEquals(testPiece.aY + 1, testPiece2.aY);
-        assertEquals(testPiece.bY + 1, testPiece2.bY);
-        assertEquals(testPiece.cY + 1, testPiece2.cY);
+        assertEquals(testPiece.centerY + 1, testFallenPiece.centerY);
+        assertEquals(testPiece.aY + 1, testFallenPiece.aY);
+        assertEquals(testPiece.bY + 1, testFallenPiece.bY);
+        assertEquals(testPiece.cY + 1, testFallenPiece.cY);
     }
 
     @Test
     void testMovePieceLeft(){
-        testPiece2.moveLeft();
-        assertEquals(testPiece.centerX - 1, testPiece2.centerX);
-        assertEquals(testPiece.aX - 1, testPiece2.aX);
-        assertEquals(testPiece.bX - 1, testPiece2.bX);
-        assertEquals(testPiece.cX - 1, testPiece2.cX);
+        assertEquals(testPiece.centerX - 1, testLeftMovedPiece.centerX);
+        assertEquals(testPiece.aX - 1, testLeftMovedPiece.aX);
+        assertEquals(testPiece.bX - 1, testLeftMovedPiece.bX);
+        assertEquals(testPiece.cX - 1, testLeftMovedPiece.cX);
     }
 
     @Test
     void testMovePieceRight(){
-        testPiece2.moveLeft();
-        assertEquals(testPiece.centerX + 1, testPiece2.centerX);
-        assertEquals(testPiece.aX + 1, testPiece2.aX);
-        assertEquals(testPiece.bX + 1, testPiece2.bX);
-        assertEquals(testPiece.cX + 1, testPiece2.cX);
+        assertEquals(testPiece.centerX + 1, testRightMovedPiece.centerX);
+        assertEquals(testPiece.aX + 1, testRightMovedPiece.aX);
+        assertEquals(testPiece.bX + 1, testRightMovedPiece.bX);
+        assertEquals(testPiece.cX + 1, testRightMovedPiece.cX);
+    }
+
+    @Test
+    void testPieceChangeForm(){
+        assertEquals(testPiece.centerX + 1, testChangedFormedPiece.centerX);
+        assertEquals(testPiece.centerY, testChangedFormedPiece.centerY);
+        assertEquals(testPiece.aX + 2, testChangedFormedPiece.aX);
+        assertEquals(testPiece.aY - 1, testChangedFormedPiece.aY);
+        assertEquals(testPiece.bX, testChangedFormedPiece.bX);
+        assertEquals(testPiece.bY + 1, testChangedFormedPiece.bY);
+        assertEquals(testPiece.cX - 1, testChangedFormedPiece.cX);
+        assertEquals(testPiece.cY + 2, testChangedFormedPiece.cY);
+
     }
 }

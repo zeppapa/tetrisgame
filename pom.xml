@@ -7,7 +7,7 @@
     <description>This is a tetris game developed as an university project.</description>
     <developers>
         <developer>
-            <name>Soltész Dániel</name>
+            <name>Soltesz Daniel</name>
             <email>solteszdan@gmail.com</email>
         </developer>
     </developers>
@@ -142,6 +142,31 @@
                                 </transformer>
                             </transformers>
                         </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>0.8.5</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>prepare-agent</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.openclover</groupId>
+                <artifactId>clover-maven-plugin</artifactId>
+                <version>4.4.1</version>
+                <executions>
+                    <execution>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>instrument</goal>
+                        </goals>
                     </execution>
                 </executions>
             </plugin>
