@@ -2,7 +2,14 @@ package model;
 
 import javafx.scene.paint.Color;
 
+/**
+ * Class representing the Tetronimo piece.
+ */
+
 public class Piece {
+    /**
+     * Representing the coordinates, value, name, color, form, and border coordinates of the piece.
+     */
     public int centerX = 5;
     public int centerY = 1;
     public int aX;
@@ -20,7 +27,19 @@ public class Piece {
     public int lowest;
     public int top;
 
+    /**
+     * Empty constructor of the {@code Piece}.
+     */
+
     public Piece(){}
+
+    /**
+     * Creating an existing piece by its name.
+     * The rectangle named "center" ({@code centerX}, {@code centerY}) is defined by its coordinates, the other
+     * rectangles are counted by their position compared to the "center".
+     * Sets the border coordinates of the piece.
+     * @param name decides where to set the other coordinates and the color of the piece.
+     */
 
     public Piece(char name){
         switch (name) {
@@ -98,6 +117,10 @@ public class Piece {
         setMosts();
     }
 
+    /**
+     * Sets the border coordinates of the piece.
+     */
+
     private void setMosts(){
         leftMost = centerX;
         if(aX < leftMost) leftMost = aX;
@@ -118,6 +141,11 @@ public class Piece {
 
     }
 
+    /**
+     * Makes a piece fall by setting its {@code y} coordinates
+     * and after that sets the border coordinates of the piece.
+     */
+
     public void fall(){
         centerY += 1;
         aY += 1;
@@ -125,6 +153,11 @@ public class Piece {
         cY += 1;
         setMosts();
     }
+
+    /**
+     * Makes a piece move right by setting its {@code x} coordinates
+     * and after that sets the border coordinates of the piece.
+     */
 
     public void moveRight(){
         centerX += 1;
@@ -134,6 +167,11 @@ public class Piece {
         setMosts();
     }
 
+    /**
+     * Makes a piece move left by setting its {@code x} coordinates
+     * and after that sets the border coordinates of the piece.
+     */
+
     public void moveLeft(){
         centerX -= 1;
         aX -= 1;
@@ -141,6 +179,12 @@ public class Piece {
         cX -= 1;
         setMosts();
     }
+
+    /**
+     * Turn the piece around if possible, otherwise trying to move to the possible direction where it can be.
+     * If the piece cannot be turned, it stays in its original position.
+     * @param map if the map where the piece is.
+     */
 
     public void changeForm(Map map){
         int tempCenterX = centerX, tempCenterY = centerY, tempAX = aX, tempAY = aY, tempBX = bX, tempBY = bY, tempCX = cX, tempCY = cY, tempForm = form;
@@ -411,6 +455,5 @@ public class Piece {
             }
         }
         setMosts();
-
     }
 }

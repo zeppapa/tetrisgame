@@ -161,8 +161,10 @@ public class GameController {
                         }
                         break;
                     case S:
-                        pieceFall();
-                        score.set(score.get() + 1);
+                        if (isStarted) {
+                            pieceFall();
+                            score.set(score.get() + 1);
+                        }
                         break;
                     case W:
                         map.setValues(piece, 0);
