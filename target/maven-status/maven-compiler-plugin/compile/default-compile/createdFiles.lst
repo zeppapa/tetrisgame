@@ -1,10 +1,16 @@
 main\MyApplication.class
 controller\GameController$3.class
+controller\ResultController.class
 model\Piece.class
 controller\GameController.class
+controller\ResultController$1.class
 main\Main.class
 controller\GameController$1$1.class
 model\Map.class
+results\TetrisGameResults.class
 controller\GameController$2.class
+results\TetrisGameResults$TetrisGameResultsBuilder.class
+util\jpa\GenericJpaDao.class
 controller\GameController$1.class
 controller\MenuController.class
+results\TetrisGameResultsDao.class
