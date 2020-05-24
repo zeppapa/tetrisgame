@@ -11,6 +11,9 @@
             <email>solteszdan@gmail.com</email>
         </developer>
     </developers>
+    <scm>
+        <connection>https://github.com/zeppapa/tetrisgame</connection>
+    </scm>
 
     <groupId>hu.unideb.inf</groupId>
     <artifactId>tetrisgame</artifactId>
