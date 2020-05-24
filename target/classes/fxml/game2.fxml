@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.GameController">
+   <children>
+      <Pane fx:id="gamePane" layoutX="44.0" layoutY="56.0" prefHeight="460.0" prefWidth="240.0" />
+      <Button fx:id="startButton" layoutX="40.0" layoutY="539.0" mnemonicParsing="false" onAction="#startGame" text="Start" />
+      <Button fx:id="newPiece" layoutX="344.0" layoutY="85.0" mnemonicParsing="false" onAction="#addNewPiece" text="New piece" />
+      <Button fx:id="fallButton" layoutX="344.0" layoutY="123.0" mnemonicParsing="false" onAction="#pieceFall" text="Move piece down" />
+      <Button fx:id="moveRightButton" layoutX="382.0" layoutY="167.0" mnemonicParsing="false" onAction="#moveRightPiece" text="-&gt;" />
+      <Button fx:id="moveLeftButton" layoutX="343.0" layoutY="167.0" mnemonicParsing="false" onAction="#moveLeftPeice" text="&lt;-" />
+      <Button fx:id="changeButton" layoutX="344.0" layoutY="201.0" mnemonicParsing="false" onAction="#changePieceForm" text="Change" />
+      <Label layoutX="93.0" layoutY="543.0" text="Score:" />
+      <Label fx:id="scoreLabel" layoutX="136.0" layoutY="536.0" prefHeight="32.0" prefWidth="296.0">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+   </children>
+</Pane>
