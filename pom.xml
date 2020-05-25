@@ -11,14 +11,25 @@
             <email>solteszdan@gmail.com</email>
         </developer>
     </developers>
+    <inceptionYear>2020</inceptionYear>
+    <organization>
+        <name>Soltesz Daniel</name>
+    </organization>
     <scm>
         <connection>scm:svn:https://github.com/zeppapa/tetrisgame</connection>
     </scm>
-
     <groupId>hu.unideb.inf</groupId>
     <artifactId>tetrisgame</artifactId>
     <packaging>jar</packaging>
     <version>1.0</version>
+
+    <licenses>
+        <license>
+            <name>The Apache Software License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -109,6 +120,26 @@
     </dependencies>
     <build>
         <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-enforcer-plugin</artifactId>
+                <version>3.0.0-M3</version>
+                <executions>
+                    <execution>
+                        <id>enforce-java</id>
+                        <goals>
+                            <goal>enforce</goal>
+                        </goals>
+                        <configuration>
+                            <rules>
+                                <requireJavaVersion>
+                                    <version>11.0.7</version>
+                                </requireJavaVersion>
+                            </rules>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
